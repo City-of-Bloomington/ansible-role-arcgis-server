@@ -1,0 +1,17 @@
+---
+- name: "Install Dependencies"
+  apt:
+    name: "{{ packages }}"
+    state: "present"
+  vars:
+    packages:
+      - "gettext"
+
+- name: "Configure Firewall"
+  ufw:
+    port: "{{ item }}"
+    rule: "allow"
+  with_items:
+    - "6080"
+    - "6443"
+...
