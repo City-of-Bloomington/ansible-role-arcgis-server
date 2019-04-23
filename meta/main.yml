@@ -16,5 +16,5 @@ galaxy_info:
     - "Esri"
 
 dependencies:
-  - { role: "City-of-Bloomington.linux"      }
+  - { role: "City-of-Bloomington.tomcat" }
 ...

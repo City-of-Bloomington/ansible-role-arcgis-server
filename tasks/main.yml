@@ -6,7 +6,6 @@
   vars:
     packages:
       - "gettext"
-      - "libxtst6"
 
 - name: "Configure Firewall"
   ufw:
@@ -18,23 +17,14 @@
 
 - name: "Create ArcGIS User"
   user:
-    name:     "{{ arcgis_system_user }}"
-    password: "{{ arcgis_system_pass }}"
-    comment:  "ArcGIS System User"
-    shell:    "/bin/bash"
-    state:    "present"
+    name:        "{{ arcgis_system_user }}"
+    comment:     "ArcGIS System User"
+    shell:       "/bin/bash"
+    state:       "present"
     create_home: "yes"
+    home:        "/srv/arcgis"
 
 - name: "Set resource limits for ArcGIS"
   template:
     src: "limits.conf"
     dest: "/etc/security/limits.conf"
-
-- name: "Create ArcGIS directory"
-  file:
-    path:  "/srv/arcgis"
-    state: "directory"
-    owner: "arcgis"
-    group: "staff"
-    mode:  "u=rwX,g=rwXs,o=rX"
-...
