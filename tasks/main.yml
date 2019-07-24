@@ -31,11 +31,9 @@
     src: "limits.conf"
     dest: "/etc/security/limits.conf"
 
-- name: "Install Conda"
-  include_tasks: "conda.yml"
-
-- name: "Install ArcPy"
-  shell: "source /opt/conda/etc/profile.d/conda.sh && conda install -c esri arcgis-server-10.6-py3"
-  args:
-    executable: "/bin/bash"
+- name: "Configure webadaptor in Apache"
+  template:
+    src: "apache.conf"
+    dest: "/etc/apache2/sites-enabled/conf.d/arcgis-webadaptor.conf"
+  notify: "apache_restart"
 ...
