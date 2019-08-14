@@ -1,0 +1,9 @@
+---
+name: "arcgis"
+channels:
+  - "esri"
+dependencies:
+  - "arcgis-server-10.6.1-py3"
+  - "psycopg2"
+...
+
