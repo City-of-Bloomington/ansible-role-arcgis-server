@@ -10,7 +10,15 @@ current_date      = now.strftime('%Y%m%d')
 current_timestamp = now.isoformat(sep=' ', timespec='seconds')
 main_log          = open(config['arcgis']['logFile'], 'w')
 
-def sendemail(txtFile, config):
+def sendemail(logFile, config):
+    """Email the log file to someone
+
+    :param logFile: Path to the file to send
+    :type  logFile: string
+
+    :param config: Email values
+    :type  config: dict
+    """
     from email.message import EmailMessage
 
     msg            = EmailMessage()
@@ -18,7 +26,7 @@ def sendemail(txtFile, config):
     msg['From'   ] = config['from']
     msg['To'     ] = config['to'  ]
 
-    with open(txtFile) as fp:
+    with open(logFile) as fp:
         msg.set_content(fp.read())
 
     # Send the message
@@ -106,4 +114,4 @@ main_log.write("Complete " + current_timestamp + "\n")
 main_log.close()
 
 if config['smtp']['enabled']:
-    sendemail(config['arcgis']['logFile'])
+    sendemail(config['arcgis']['logFile'], config['smtp'])
