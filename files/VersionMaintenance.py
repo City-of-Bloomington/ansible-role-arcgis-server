@@ -30,9 +30,9 @@ def sendemail(logFile, config):
         msg.set_content(fp.read())
 
     # Send the message
-    s = smtplib.SMTP(config['server'], 587)
+    s = smtplib.SMTP(config['server'], 25)
     s.ehlo()
-    s.starttls()
+    #s.starttls()
     s.send_message(msg)
     s.quit()
 
@@ -42,7 +42,7 @@ main_log.write("Starting script {}\n".format(current_timestamp))
 
 #SDE default version
 defaultVersion = "SDE.DEFAULT"
-editVersion = "SDE.MasterEdit"
+editVersion = "arcdbcity.bloom"
 
 #send the email or not
 needsToSendEmail = False
@@ -59,7 +59,7 @@ arcpy.ReconcileVersions_management(config['arcgis']['sdeFile'],
                                    "LOCK_ACQUIRED",
                                    "ABORT_CONFLICTS",
                                    "BY_OBJECT",
-                                   "FAVOR_TARGET_VERSION",
+                                   "FAVOR_EDIT_VERSION",
                                    "POST",
                                    "KEEP_VERSION")
 main_log.write(arcpy.GetMessages() + "\n")
