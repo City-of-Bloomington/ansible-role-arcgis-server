@@ -1,6 +1,6 @@
 #!/bin/bash
 #modify this to the location of the arcgis server home directly
-export ARCGISHOME=/home/keith/arcgis/server 
+export ARCGISHOME=/srv/arcgis/server
 
 source activate
 #assumes the py script is in the same directory as the shell script
@@ -17,7 +17,7 @@ source deactivate
 #
 #to call the py script outside the sh do the following
 ##set the arcgishome directory
-#export ARCGISHOME=/home/keith/arcgis/server
+#export ARCGISHOME=/srv/arcgis/server
 #
 ##call this before starting the python with arcpy..
 #Source activate
@@ -25,15 +25,15 @@ source deactivate
 #Then call the python file directly by executing: python /path to py script/VersionMaintenance.py
 #
 #Finally call the following to deactivate python
-#source deactivate 
+#source deactivate
 
 
 
-#to execute from bash 
+#to execute from bash
 #
 #copy shell script to execution location
 #make the shell script executable chmod u+x pyCall.sh
-#Then execute the script from the terminal 
+#Then execute the script from the terminal
 
 
 #####################
