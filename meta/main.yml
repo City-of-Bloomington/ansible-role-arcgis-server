@@ -1,5 +1,6 @@
 ---
 galaxy_info:
+  role_name: 'arcgis_server'
   description: "Role for maintaining ArcGIS Server on Ubuntu"
   company: "City of Bloomington, Indiana"
   issue_tracker_url: "https://github.com/City-of-Bloomington/ansible-role-arcgis-server/issues"
